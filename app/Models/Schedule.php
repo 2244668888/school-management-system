@@ -1,7 +1,5 @@
 <?php
 
-// app/Models/Schedule.php
-
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -12,19 +10,13 @@ class Schedule extends Model
     use HasFactory;
 
     protected $fillable = [
-        'student_id',
-        'class_id',
+        'class_name',
         'start_time',
         'end_time',
     ];
 
-    public function student()
-    {
-        return $this->belongsTo(Student::class);
-    }
-
     public function class()
     {
-        return $this->belongsTo(ClassModel::class);
+        return $this->belongsTo(ClassModel::class); // Adjust to the actual model name
     }
 }

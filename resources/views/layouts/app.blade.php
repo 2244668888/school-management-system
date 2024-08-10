@@ -11,13 +11,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.0/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
     <!-- DataTables CSS -->
     <link href="https://cdn.datatables.net/1.13.3/css/jquery.dataTables.min.css" rel="stylesheet">
     <link href="https://cdn.datatables.net/1.13.3/css/dataTables.bootstrap5.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.1/css/jquery.dataTables.min.css">
+
     <!-- Custom CSS -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @stack('styles')
@@ -55,6 +57,13 @@
         .nav-item.dropdown:hover .dropdown-toggle::after {
             transform: rotate(90deg);
         }
+        .custom-background {
+    background-color: #becee7; /* Light gray or any color you prefer */
+    padding: 20px; /* Add some padding */
+    border-radius: 8px; /* Optional: for rounded corners */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Optional: for a subtle shadow */
+}
+
     </style>
 </head>
 <body class="font-sans antialiased bg-gray-100">
@@ -132,12 +141,14 @@
                             <li><a class="dropdown-item" href="{{ route('classes.create') }}"><i class="bi bi-plus-circle"></i> Create Class</a></li>
                         </ul>
                     </li>
-
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-envelope"></i> Messages</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="classDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="bi bi-collection"></i> Class Schedules
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="classDropdown">
+                            <li><a class="dropdown-item" href="{{ route('schedules.index') }}"><i class="bi bi-collection"></i> View Schedule</a></li>
+                            <li><a class="dropdown-item" href="{{ route('schedules.create') }}"><i class="bi bi-plus-circle"></i> Create Schedule</a></li>
+                        </ul>
                     </li>
                 </ul>
                 <form class="d-flex ms-auto" method="POST" action="{{ route('logout') }}">
@@ -155,10 +166,18 @@
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.3/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.3/js/dataTables.bootstrap5.min.js"></script>
     @stack('scripts')
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#enrollmentsTable').DataTable();
+        });
+    </script>
 
 </body>
 </html>
@@ -168,4 +187,12 @@
     });
 
         </script>
+        <script>
+            $(document).ready(function() {
+                $('.table').DataTable({
+                    responsive: true
+                });
+            });
+        </script>
+
 

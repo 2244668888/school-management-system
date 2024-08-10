@@ -1,0 +1,8 @@
+/* public/css/custom.css */
+.card {
+    background-color: #b4cee7; /* Light background color for the card */
+}
+
+.container {
+    max-width: 800px; /* Adjust container width */
+}

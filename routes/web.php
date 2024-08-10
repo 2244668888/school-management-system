@@ -15,6 +15,7 @@ use App\Http\Controllers\SaleController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AttendanceController;
 use App\Http\Controllers\ScheduleController;
+use App\Http\Controllers\DashboardController;
 
 
 
@@ -22,7 +23,7 @@ use App\Http\Controllers\ScheduleController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
@@ -57,6 +58,7 @@ Route::resource('reports', ReportController::class);
 Route::resource('attendances', AttendanceController::class);
 Route::resource('schedules', ScheduleController::class);
 
+Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
 
 

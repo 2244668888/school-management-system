@@ -34,6 +34,17 @@ class ClassController extends Controller
 
         return redirect()->route('classes.index')->with('success', 'Class created successfully.');
     }
+    public function edit($id)
+    {
+        $class = ClassModel::find($id);
+
+        if ($class) {
+            return view('classes.edit', compact('class'));
+        } else {
+            return redirect()->route('classes.index')->with('error', 'Class not found.');
+        }
+    }
+
 
     public function destroy($id)
     {
